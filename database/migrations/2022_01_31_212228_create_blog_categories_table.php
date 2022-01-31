@@ -15,6 +15,10 @@ class CreateBlogCategoriesTable extends Migration
     {
         Schema::create('blog_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('icon')->default('/assets/images/bg/texture.jpg');
+            $table->longText('detail')->nullable();
             $table->timestamps();
         });
     }
