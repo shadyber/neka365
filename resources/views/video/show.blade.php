@@ -39,6 +39,7 @@
                             <p class="cats">
                                 <a href="#">{{$video->tags}}</a>
                             </p>
+                            <div class="fb-like" data-href="{{$video->getlink()}}" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
 
                             <!-- Title -->
                             <div class="title">
