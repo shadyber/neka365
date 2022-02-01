@@ -7,19 +7,17 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class BlogCreatedNotification extends Notification
+class UserRegisteredNotification extends Notification
 {
     use Queueable;
-    public  $blog;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($blog)
+    public function __construct()
     {
-        $this->blog=$blog;
         //
     }
 
@@ -43,9 +41,9 @@ class BlogCreatedNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('New Articles are Created at info251.')
-                    ->action('Browse', url('/blog/'.$this->blog->slug))
-                    ->line('Thank you for using info251!');
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/users/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -57,12 +55,14 @@ class BlogCreatedNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message'=>'New Article is Creaed at info251',
-            'action'=>'/blog/'.$this->blog->slug,
-            'detail'=>''.strip_tags($this->blog->detail),
-            'title'=>''.$this->blog->title,
-            'thumb'=>$this->blog->thumb,
-            'photo'=>$this->blog->photo,
+            //
+        ];
+    }
+    public function toDatabase($notifiable): array
+    {
+        return [
+           'message'=>'message',
+            'action'=>'/user'
         ];
     }
 }
