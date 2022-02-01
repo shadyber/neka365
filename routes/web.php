@@ -6,6 +6,9 @@ use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\BlogCommentController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,17 +58,31 @@ Route::get('/subscribe',function (){
     return view('subscribe');
 });
 
-Route::group(['middleware' => 'auth'], function() {
-
-
 
     Route::resource('/category',BlogCategoryController::class);
     Route::resource('/blog',BlogController::class);
     Route::resource('/video',VideoController::class);
-    Route::resource('/newsletter',NewsletterController::class);
+    Route::resource('/newsletters',NewsletterController::class);
     Route::resource('/address',AddressController::class);
-    });
 
     Route::resource('/comment',BlogCommentController::class);
 
+
+
+
+
+Route::group(['middleware' => 'role:admin'], function() {
+
+    Route::resource('/user', UserController::class);
+    Route::resource('/permission', PermissionController::class);
+    Route::resource('/role',RoleController::class);
+
+    Route::get('/init', function (){
+
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+        \Illuminate\Support\Facades\Artisan::call('migrate:fresh');
+        \Illuminate\Support\Facades\Artisan::call('db:seed');
+        echo 'initialized';
+    });
+   });
 
