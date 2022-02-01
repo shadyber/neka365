@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +24,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(['middleware' => 'auth'], function() {
+
+
+
+    Route::resource('/blogcategory',BlogCategoryController::class);
+    Route::resource('/blog',BlogController::class);
+    Route::resource('/video',VideoController::class);
+    Route::resource('/newsletter',NewsletterController::class);
+    Route::resource('/address',AddressController::class);
+    });
