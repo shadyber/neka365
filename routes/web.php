@@ -23,13 +23,38 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
+
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
 Route::get('/search', [App\Http\Controllers\SearchController::class,'search'])->name('search');
+
+Route::get('/terms', function (){
+    return view('terms');
+});
+
+Route::get('/about', function (){
+    return view('about');
+});
+Route::get('/dashboard', function (){
+    return view('dashboard');
+});
+Route::get('/notifications',[App\Http\Controllers\NotificationsController::class,'index']);
+Route::get('/notifications/{id}',[App\Http\Controllers\NotificationsController::class,'show'])->name('notification.read');
+
+
+Route::resource('/contact',App\Http\Controllers\AddressController::class);
+
+Route::get('/subscribe',function (){
+    return view('subscribe');
+});
+
 Route::group(['middleware' => 'auth'], function() {
 
 

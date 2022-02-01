@@ -21,7 +21,7 @@
                                     <ul class="sub-menu">
                                         <li><a href="/blog">{{__('All Articles')}}</a></li>
                                         @foreach(\App\Models\BlogCategory::allCategories() as $category)
-                                            <li><a href="/blogcategory/{{$category->slug}}">{{$category->title}}</a></li>
+                                            <li><a href="/category/{{$category->slug}}">{{$category->title}}</a></li>
                                         @endforeach
                                     </ul>
 
@@ -77,34 +77,32 @@
                             @guest
                               <li class="nav-item"> <a href="/register"> {{__('Join')}}</a></li>
                             @endguest
-
                             <li class="menu-item-has-children">
 
 
-                                <a>
+                                <a  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                     <span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span>
                                     {{ Config::get('languages')[App::getLocale()]['display'] }}
 
                                 </a>
 
-                                    <ul class="sub-menu">
-                                        @foreach (Config::get('languages') as $lang => $language)
+                                <ul class="sub-menu">
+                                    @foreach (Config::get('languages') as $lang => $language)
 
-                                            @if ($lang != App::getLocale())
+                                        @if ($lang != App::getLocale())
 
-                                                <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
-                                                    <span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
-                                                    {{$language['display']}}
-                                                </a>
+                                            <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                                                <span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
+                                                {{$language['display']}}
+                                            </a>
 
-                                            @endif
+                                        @endif
 
-                                        @endforeach
-                                    </ul>
+                                    @endforeach
+                                </ul>
 
                             </li>
-
 
                         </ul>
                     </div>

@@ -12,7 +12,7 @@
                         <div class="post-thumb"> <a href="/blog/{{$blog->slug}}">
                                 <img src="{{$blog->thumb}}" alt="{{$blog->title}}" class="img-fluid"> </a> </div>
                         <div class="post-data">
-                            <div class="cats"><a href="/blogcategory/{{$blog->Category->slug}}">{{$blog->Category->title}}</a></div>
+                            <div class="cats"><a href="/category/{{$blog->Category->slug}}">{{$blog->Category->title}}</a></div>
                             <div class="title">
                                 <h2><a href="/blog/{{$blog->slug}}">{{$blog->title}}</a></h2>
                             </div>
