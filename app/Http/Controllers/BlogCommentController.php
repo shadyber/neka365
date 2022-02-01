@@ -35,7 +35,24 @@ class BlogCommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+                'comment'=>'required',
+
+            ]);
+
+
+
+
+
+            BlogComment::create([
+                    'comment'=>$request->input('comment'),
+                    'user_id'=>auth()->user()->id,
+                    'blog_id'=>$request->input('blog_id'),
+
+                ]
+            );
+
+            return redirect()->back()->with('message','Commenyt Posted Succusfully!');
     }
 
     /**

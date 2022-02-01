@@ -28,7 +28,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 
-    <title>teleAddis. @yield('title')</title>
+    <title>neka365. @yield('title')</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="/admin/image/png" sizes="16x16" href="/admin/plugins/images/favicon.png">
@@ -37,8 +37,8 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="/assets/https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="/assets/https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
@@ -155,7 +155,7 @@
 
                     <li>
                         <a class="profile-pic" href="#">
-                            <img src="{{Auth::user()->photo}}" alt="user-img" width="36"
+                            <img src="/assets/{{Auth::user()->photo}}" alt="user-img" width="36"
                                  class="img-circle"><span class="text-white font-medium">{{Auth::user()->name}}</span></a>
                     </li>
                     <li>

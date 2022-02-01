@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
     {
         \DB::table('users')->insert([
             'name' => 'Super Admin',
-            'email' => 'admin@teleaddis.com',
+            'email' => 'admin@neka365.com',
             'tel' => '11111111',
             'password' => bcrypt('password'),
             'avatar' => '/images/avatar.png',

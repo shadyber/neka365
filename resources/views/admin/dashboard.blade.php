@@ -2,7 +2,6 @@
 @section('title','Admin Dashboard')
 @section('content')
 
-row
-
+Dashboard
 
 @endsection

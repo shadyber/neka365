@@ -1,7 +1,7 @@
 /*
 Template Name: VIDOE - Video Streaming Website HTML Template
 Author: Askbootstrap
-Author URI: https://themeforest.net/user/askbootstrap
+Author URI: https://rootsystemset.com/user/askbootstrap
 Version: 1.0
 */
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

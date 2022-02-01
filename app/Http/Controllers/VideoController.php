@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogCategory;
+use App\Models\User;
 use App\Models\Video;
+use App\Notifications\BlogCreatedNotification;
+use App\Notifications\VideoCreatedNotification;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index','show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +26,10 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+
+        $vidos= Video::orderBy('id','desc')->paginate(9);
+        return view('admin.video.index')->with(['videos'=>$vidos])->with('error','You Don\'t Have This Permission');
+
     }
 
     /**
@@ -23,8 +38,13 @@ class VideoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {  if(!Auth::user()->hasRole('admin')){
+        return redirect()->back()->with('error','You Don\'t Have This Permission');
+    }
+
+        $categories=BlogCategory::all();
+        return view('admin.video.create')->with('categories',$categories);
+
     }
 
     /**
@@ -35,51 +55,93 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if(!Auth::user()->hasRole('admin')){
+            return redirect()->back()->with('error','You Don\'t Have This Permission');
+        }
+
+        $lastvideo=  Video::create([
+                'title'=>$request->input('title'),
+                'detail'=>$request->input('detail'),
+                'slug'=>SlugService::createSlug(Video::class,'slug',$request->title.$request->_token),
+
+                'tags'=>$request->input('tags'),
+                'url'=>$request->input('url'),
+                'videoId'=>$request->input('videoId'),
+                'iframe'=>$request->input('iframe'),
+                'thumb_small'=>$request->input('thumb_small'),
+                'thumb_big'=>$request->input('thumb_big'),
+
+                'user_id'=>auth()->user()->id,
+
+                'blog_category_id'=>$request->input('blog_category_id'),
+            ]
+        );
+
+
+        $users=User::all();
+        foreach ($users as $user){
+            //    $user->Notify(new VideoCreatedNotification($lastvideo));
+        }
+
+        return redirect()->back()->with('success','Video Posted Succusfully!');
+
     }
+
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Video  $video
-     * @return \Illuminate\Http\Response
+     * @param  string $slug
+     * @return Response
      */
-    public function show(Video $video)
+    public function show($slug)
     {
-        //
+        $video=Video::where('slug',$slug)->first();
+        $video->visit++;
+        $video->save();
+
+
+        return view('video.show')->with('video',$video);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Video  $video
+     * @param  \App\Models\Video  $videos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Video $video)
+    public function edit(Video $videos)
     {
-        //
+        return view('video.edit')->with(['video'=>$videos]);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Video  $video
+     * @param  \App\Models\Video  $videos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Video $video)
-    {
-        //
+    public function update(Request $request, Videos $videos)
+    {  if(!Auth::user()->hasRole('admin')){
+        return redirect()->back()->with('error','You Don\t Have This Permission');
+    }
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Video  $video
+     * @param  \App\Models\Video  $videos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $video)
+    public function destroy(Videos $videos)
     {
-        //
+        if(!Auth::user()->hasRole('admin')){
+            return redirect()->back()->with('error','You Don\t Have This Permission');
+        }
     }
 }

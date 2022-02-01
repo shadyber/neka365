@@ -46,7 +46,7 @@ class BlogController extends Controller
         if(!Auth::user()->hasRole('admin')){
             return redirect()->back()->with('error','You Don\'t Have This Permissions');
         }
-        return view('blog.create');
+        return view('admin.blog.create');
 
 
     }
@@ -85,7 +85,7 @@ class BlogController extends Controller
             $new_img->save($destinationPath . $file_name, 100);
             $new_img->save($destinationPath.'thumbnails/' . $file_name, 15);
 
-            $request->photo->move(public_path('images/blog'),$newImageName);
+            $request->photo->move(public_path('blog.images/blog'),$newImageName);
 
         }
 
