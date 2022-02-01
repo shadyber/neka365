@@ -5,17 +5,7 @@
 @section('detail',$video->detail)
 
 @section('content')
-    <div class="page-title">
-        <div class="container">
-            <h2>{{$video->title}}</h2>
-            <ul class="nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/video">{{__('Videos')}}</a></li>
-                <li><a href="{{$video->category->getlink()}}">{{$video->category->title}}</a></li>
-                <li>here <a href="{{$video->getlink()}}">{{$video->title}}</a> </li>
-            </ul>
-        </div>
-    </div>
+
 
 
     <div class="container pt-120 pb-90">

@@ -112,7 +112,7 @@
                     @foreach($videos=\App\Models\Video::Paginate(15) as $video)
                         <tr>
                             <td>{{$video->id}}</td>
-                            <td><img src="/assets/{{$video->thumb_small}}" alt="{{$video->title}}" class="img img-thumbnail" width="48px"></td>
+                            <td><img src="{{$video->thumb_small}}" alt="{{$video->title}}" class="img img-thumbnail" width="48px"></td>
                             <td>{{$video->title}}</td>
                             <td>{{substr(strip_tags($video->detail),0,100)}}</td>
                             <td>

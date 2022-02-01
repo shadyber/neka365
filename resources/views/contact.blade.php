@@ -2,15 +2,6 @@
 @section('title',__('Contact Us'))
 @section('content')
 
-    <div class="page-title">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <ul class="nav">
-                <li><a href="/">{{__('Home')}}</a></li>
-                <li><a href="/contact"></a>{{__('Contact Us')}}</li>
-            </ul>
-        </div>
-    </div>
 
     <div class="container pt-120 pb-120">
         <!-- Contact Cover -->

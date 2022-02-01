@@ -116,8 +116,6 @@
 @include('layouts.inc.header')
 
 @include('layouts.inc.banner')
-<main id="app">
-@include('layouts.inc.flash_messages')
 
 <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -558,7 +556,6 @@
     <!-- End of Newsletter -->
     @include('layouts.inc.footer')
 
-</main>
 <!-- Back to Top Button -->
 <div class="back-to-top d-flex align-items-center justify-content-center">
     <span><i class="fa fa-long-arrow-up"></i></span>

@@ -1,14 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <div class="page-title">
-        <div class="container">
-            <h2>{{__('Terms and Conditions')}}</h2>
-            <ul class="nav">
-                <li><a href="/l">{{__('Home')}}</a></li>
-                <li>{{__('Terms and Conditions')}}</li>
-            </ul>
-        </div>
-    </div>
 
 
 

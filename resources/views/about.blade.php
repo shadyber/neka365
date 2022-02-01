@@ -1,16 +1,6 @@
 @extends('layouts.app')
 @section('title','About Us')
 @section('content')
-    <div class="page-title">
-        <div class="container">
-            <h2>{{__('About')}}</h2>
-            <ul class="nav">
-                <li><a href="/l">{{__('Home')}}</a></li>
-                <li>{{__('About')}}</li>
-            </ul>
-        </div>
-    </div>
-
 
 
 

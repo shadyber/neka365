@@ -77,7 +77,7 @@
                                                 <div class="post-default">
                                                     <div class="post-thumb">
                                                         <a href="/video/{{$video->slug}}">
-                                                            <img src="/assets/{{$video->thumb_small}}" alt="{{$video->title}}" class="img-fluid">
+                                                            <img src="{{$video->thumb_small}}" alt="{{$video->title}}" class="img-fluid">
                                                         </a>
                                                     </div>
                                                     <div class="post-data">

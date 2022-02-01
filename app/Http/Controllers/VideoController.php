@@ -28,7 +28,7 @@ class VideoController extends Controller
     {
 
         $vidos= Video::orderBy('id','desc')->paginate(9);
-        return view('admin.video.index')->with(['videos'=>$vidos])->with('error','You Don\'t Have This Permission');
+        return view('video.index')->with(['videos'=>$vidos])->with('error','You Don\'t Have This Permission');
 
     }
 
