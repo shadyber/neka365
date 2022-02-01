@@ -17,7 +17,7 @@
                             <div class="single-video  mdi-margin" width="60%"  id="player" >
                                 <iframe width="100%"
                                         height="315"
-                                        src="/assets/https://www.youtube.com/embed/{{$video->videoId}}?start=5"
+                                        src="https://www.youtube.com/embed/{{$video->videoId}}?start=5"
                                         frameborder="0"
                                         allow="accelerometer;
                                      autoplay;

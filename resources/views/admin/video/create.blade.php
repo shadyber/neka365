@@ -197,7 +197,7 @@
 
             var thumb_big='https://i3.ytimg.com/vi/'+vid+'/maxresdefault.jpg';
 
-            var iframe='<iframe width="100%"  src="/assets/https://www.youtube.com/embed/'+vid+'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            var iframe='<iframe width="100%"  src="https://www.youtube.com/embed/'+vid+'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 
             jQ_append('videoId', vid);
 
