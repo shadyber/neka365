@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\BlogCommentController;
@@ -27,11 +28,13 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+
+Route::get('/search', [App\Http\Controllers\SearchController::class,'search'])->name('search');
 Route::group(['middleware' => 'auth'], function() {
 
 
 
-    Route::resource('/blogcategory',BlogCategoryController::class);
+    Route::resource('/category',BlogCategoryController::class);
     Route::resource('/blog',BlogController::class);
     Route::resource('/video',VideoController::class);
     Route::resource('/newsletter',NewsletterController::class);
@@ -41,6 +44,3 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('/comment',BlogCommentController::class);
 
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

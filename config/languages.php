@@ -6,12 +6,16 @@ return [
         'display' => 'English',
         'flag-icon' => 'us'
     ],
-    'fr' => [
-        'display' => 'Français',
-        'flag-icon' => 'fr'
+    'am' => [
+        'display' => 'Amharic',
+        'flag-icon' => 'et'
     ],
-    'es' => [
-        'display' => 'Spanish',
-        'flag-icon' => 'es'
+    'or' => [
+        'display' => 'Oromic',
+        'flag-icon' => 'et'
+    ],
+    'tg' => [
+        'display' => 'Tigringa',
+        'flag-icon' => 'et'
     ],
 ];

@@ -44,9 +44,10 @@
     </div>
 </div>
 <div class="nav-search-box">
-    <form>
+    <form action="/search" method="GET">
+
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="eg. feel the love and …"> <span class="b-line"></span> <span class="b-line-under"></span>
+            <input type="text" name="key" class="form-control" placeholder="eg. feel the love and …"> <span class="b-line"></span> <span class="b-line-under"></span>
             <div class="input-group-append">
                 <button type="button" class="btn"> <img src="/assets/images/search-icon.svg" alt="" class="img-fluid svg"> </button>
             </div>
