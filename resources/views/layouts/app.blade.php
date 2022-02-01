@@ -8,9 +8,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'MedInfo') }}</title>
+    <title>{{ config('app.name', 'Neka365') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- You can use Open Graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+    <meta property="og:url"           content="@yield('url')" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="@yield('title')" />
+    <meta property="og:description"   content="@yield('detail')" />
+    <meta property="og:image"         content="@yield('image')" />
 
 
     <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
@@ -35,6 +43,8 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=1241046355944849&autoLogAppEvents=1" nonce="TwStLW5f"></script>
 <div class="preloader">
     <div class="preload-img">
         <div class="spinnerBounce">

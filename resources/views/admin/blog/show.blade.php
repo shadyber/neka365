@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('title',$blog->title)
-@section('image','https://neka3665.com/'.$blog->photo)
+@section('image','https://neka365.com'.$blog->photo)
 @section('detail',$blog->detail)
+@section('url',$blog->getlink())
 
 @section('content')
 
@@ -30,6 +31,7 @@
                             <cite>{{$blog->User->name}}</cite> </blockquote>
 
                          <p> {{strip_tags(substr($blog->detail,0,50))}}</p>
+                        <div class="fb-like" data-href="{{$blog->getlink()}}" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
                       {{!$blog->detail}}
                     </div>
                     <div class="post-all-tags">
