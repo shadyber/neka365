@@ -16,6 +16,7 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->string('cover_img')->default('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz4gWWw4mZvIGN8Yi7AuxOIQzT1TznOFg-kg&usqp=CAU');
             $table->longText('detail');
             $table->string('author');

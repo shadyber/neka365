@@ -58,7 +58,7 @@ class RegistrationController extends Controller
         $tel = preg_replace("/^\+?{$country_code}/", '0',$tel);
 
         $name=$request['name'] ? $request['name'] : $tel;
-        $email=$request['email'] ? $request['email'] : $tel.'@teleaddis.com';
+        $email=$request['email'] ? $request['email'] : $tel.'@addisbook.com';
 
         $password=$request['password'];;
 
