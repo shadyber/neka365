@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogCategoryController;
+use \App\Http\Controllers\BookController;
 use App\Http\Controllers\BlogCommentController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PermissionController;
@@ -33,6 +34,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('/blog', BlogController::class);
+Route::resource('/book', BookController::class);
 Route::resource('/video', VideoController::class);
 Route::resource('/category', BlogCategoryController::class);
 

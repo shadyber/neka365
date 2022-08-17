@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -18,12 +20,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books= Book::orderBy('id','desc')->paginate(9);
-        return view('book.index')->with(['books'=>$books])->with('error','You Don\'t Have This Permission');
-
-
+        $books= Book::where('lang', config('app.locale'))->paginate(9);
+        return view('book.index')->with(['books'=>$books])->with('error','You Don\'t Have This Permissions');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,6 +31,14 @@ class BookController extends Controller
     public function create()
     {
         //
+
+        //
+        if(!Auth::user()->hasRole('admin')){
+            return redirect()->back()->with('error','You Don\'t Have This Permissions');
+        }
+        return view('book.create');
+
+
     }
 
     /**
@@ -44,27 +51,33 @@ class BookController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param  string $slug
+     * @return Response
      */
-    public function show(Book $book)
+    public function show($slug)
     {
-        //
-    }
+        $book=book::where('slug',$slug)->first();
+        $book->visit++;
+        $book->save();
 
+        return view('book.show')->with('book',$book);
+    }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit(book $book)
     {
-        //
+        if(!Auth::user()->hasRole('admin')){
+            return redirect()->back()->with('error','You Don\'t Have This Permissions');
+        }
+        return view('book.edit')->with('book',$book);
+
     }
 
     /**

@@ -67,7 +67,7 @@
 @include('layouts.inc.header')
 <div class="page-title">
     <div class="container">
-        <h2>Neka365</h2>
+        <h2>AddisBooks</h2>
         <ul class="nav">
             <li><a href="/">Home</a></li>
             <li><a href="/blog">Blog</a></li>
