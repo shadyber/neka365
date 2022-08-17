@@ -18,7 +18,8 @@
             <div class="col-md-3"><a href="/terms"> Terms and Conditions</a></div>
             <div class="col-md-3 order-md-3 order-3">
                 <div class="footer-cradit text-center text-md-right">
-                    <p>© 2022<a href="/">R∞t System</a></p>
+                    <p>©
+                        MT ICT Technology Plc.  2022<a href="/">R∞t System</a></p>
                 </div>
             </div>
         </div>

@@ -5,7 +5,9 @@
             <div class="row d-flex align-items-center">
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="logo">
-                        <a href="#"><img src="/assets/images/logo.png" alt="" class="img-fluid"></a>
+                        <a href="#"><img src="/assets/images/logo.png" alt="
+MT ICT Technology Plc." class="img-fluid">
+                         </a>  <br> MT ICT Technology Plc.
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-8 col-6 d-flex justify-content-end position-static">
