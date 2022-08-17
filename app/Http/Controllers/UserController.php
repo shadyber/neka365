@@ -31,7 +31,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('users.index')->with('users',User::all());
+        return view('users.index')->with(['users'=>User::all(),'i'=>0]);
     }
 
     /**
@@ -98,7 +98,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        return view ('users.edit')->with('user',User::find($id));
+        return view ('users.edit')->with(['user'=>User::find($id),'roles'=>Role::all(),'userRole'=>User::find($id)->Role]);
     }
 
     /**
@@ -121,11 +121,11 @@ class UserController extends Controller
         try{
 
 
-        \DB::table('users_roles')->insert([
-            'user_id' => $id,
-            'role_id' => $request->role,
-        ]);
- }catch (QueryException $qx){
+            \DB::table('users_roles')->insert([
+                'user_id' => $id,
+                'role_id' => $request->role,
+            ]);
+        }catch (QueryException $qx){
 
         }
         $user=User::find($id);

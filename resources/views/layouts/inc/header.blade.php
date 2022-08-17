@@ -37,7 +37,7 @@
 
                             </li>
 
-                            <li><a href="/contact">{{__('Contact')}}</a></li>
+                            <li><a href="/book">{{__('Books')}}</a></li>
 
 
                             @auth

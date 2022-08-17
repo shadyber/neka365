@@ -15,10 +15,10 @@ class AdminSeeder extends Seeder
     {
         \DB::table('users')->insert([
             'name' => 'Super Admin',
-            'email' => 'admin@neka365.com',
+            'email' => 'admin@addisbook.com',
             'tel' => '11111111',
             'password' => bcrypt('password'),
-            'avatar' => '/images/avatar.png',
+            'photo' => '/images/avatar.png',
         ]);
     }
 }

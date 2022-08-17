@@ -17,6 +17,7 @@ class Blog extends Model
         'detail',
         'photo',
         'thumb',
+        'lang',
         'slug',
         'tags',
         'user_id',

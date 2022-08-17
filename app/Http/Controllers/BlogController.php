@@ -19,7 +19,7 @@ class BlogController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index','show');
+        $this->middleware('auth')->except('index');
     }
     /**
      * Display a listing of the resource.
@@ -28,9 +28,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-
-        $blogs= Blog::orderBy('id','desc')->paginate(9);
-        return view('admin.blog.index')->with(['blogs'=>$blogs])->with('error','You Don\'t Have This Permissions');
+        $blogs= Blog::where('lang', config('app.locale'))->paginate(9);
+        return view('blog.index')->with(['blogs'=>$blogs])->with('error','You Don\'t Have This Permissions');
     }
 
     /**
@@ -46,7 +45,7 @@ class BlogController extends Controller
         if(!Auth::user()->hasRole('admin')){
             return redirect()->back()->with('error','You Don\'t Have This Permissions');
         }
-        return view('admin.blog.create');
+        return view('blog.create');
 
 
     }
@@ -85,7 +84,7 @@ class BlogController extends Controller
             $new_img->save($destinationPath . $file_name, 100);
             $new_img->save($destinationPath.'thumbnails/' . $file_name, 15);
 
-            $request->photo->move(public_path('blog.images/blog'),$newImageName);
+            $request->photo->move(public_path('images/blog'),$newImageName);
 
         }
 
@@ -97,6 +96,7 @@ class BlogController extends Controller
                 'photo'=>'/images/blog/'.$newImageName,
                 'thumb'=>'/images/blog/thumbnails/'.$newImageName,
                 'tags'=>$request->input('tags'),
+                'lang'=>$request->input('lang'),
 
                 'user_id'=>auth()->user()->id,
 
@@ -107,7 +107,7 @@ class BlogController extends Controller
 
         $users=User::all();
         foreach ($users as $user){
-            $user->Notify(new BlogCreatedNotification($lastblog));
+            //  $user->Notify(new BlogCreatedNotification($lastblog));
         }
 
         return redirect()->back()->with('success','Article Created Succusfully!');
@@ -126,7 +126,7 @@ class BlogController extends Controller
         $blog->visit++;
         $blog->save();
 
-        return view('admin.blog.show')->with('blog',$blog);
+        return view('blog.show')->with('blog',$blog);
     }
     /**
      * Show the form for editing the specified resource.
@@ -139,7 +139,7 @@ class BlogController extends Controller
         if(!Auth::user()->hasRole('admin')){
             return redirect()->back()->with('error','You Don\'t Have This Permissions');
         }
-        return view('admin.blog.edit')->with('blog',$blog);
+        return view('blog.edit')->with('blog',$blog);
 
     }
 

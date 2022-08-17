@@ -3,34 +3,35 @@
 namespace App\Models;
 
 use App\Permissions\HasPermissionsTrait;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class  User extends Authenticatable
 {
-    use  HasFactory, Notifiable;
 
-    use HasPermissionsTrait; //Import The Trait
+    use  HasFactory, Notifiable;
+ //   use HasPermissionsTrait; //Import The Trait
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
         'name',
         'email',
-        'avatar',
-        'tel',
         'password',
+        'photo',
+        'tel',
+        'isSubscribed'
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes that should be hidden for arrays.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -38,14 +39,13 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * The attributes that should be cast to native types.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
 
 
     public function comments()
@@ -61,11 +61,10 @@ class User extends Authenticatable
 
     public function videos()
     {
-        return $this->hasMany(Video::class);
+        return $this->hasMany(Videos::class);
     }
 
     public function role(){
         return $this->belongsTo(Role::class);
     }
-
 }
