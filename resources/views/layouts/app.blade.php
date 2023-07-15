@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Addis Books') }}</title>
+    <title>{{ config('app.name', 'AI News & Update') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -44,7 +44,6 @@
 
 <body>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=1241046355944849&autoLogAppEvents=1" nonce="TwStLW5f"></script>
 <div class="preloader">
     <div class="preload-img">
         <div class="spinnerBounce">

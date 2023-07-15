@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title',$blog->title)
-@section('image','https://neka365.com'.$blog->photo)
+@section('image','https://AINews.com'.$blog->photo)
 @section('detail',$blog->detail)
 @section('url',$blog->getlink())
 

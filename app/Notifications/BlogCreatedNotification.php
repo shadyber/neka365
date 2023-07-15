@@ -43,9 +43,9 @@ class BlogCreatedNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('New Articles are Created at neka365.')
+                    ->line('New Articles are Created at AINews.')
                     ->action('Browse', url('/blog/'.$this->blog->slug))
-                    ->line('Thank you for using neka365!');
+                    ->line('Thank you for using AINews!');
     }
 
     /**
@@ -57,7 +57,7 @@ class BlogCreatedNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message'=>'New Article is Creaed at neka365',
+            'message'=>'New Article is Creaed at AINews',
             'action'=>'/blog/'.$this->blog->slug,
             'detail'=>''.strip_tags($this->blog->detail),
             'title'=>''.$this->blog->title,

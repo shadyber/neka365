@@ -34,7 +34,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('/blog', BlogController::class);
-Route::resource('/book', BookController::class);
 Route::resource('/video', VideoController::class);
 Route::resource('/category', BlogCategoryController::class);
 
@@ -58,14 +57,6 @@ Route::get('/about', function (){
 });
 
 
-Route::get('/migrate', function (){
-    \Illuminate\Support\Facades\Artisan::call('migrate');
-});
-
-
-Route::get('/migrate', function (){
-    return view('welcome')->with("success","You are succesfully unsubscribe ");
-});
 
 
 Route::resource('/comment', BlogCommentController::class);
@@ -79,12 +70,6 @@ Route::get('/notifications',[App\Http\Controllers\NotificationsController::class
 Route::get('/notifications/{id}',[App\Http\Controllers\NotificationsController::class,'show'])->name('notification.read');
 
 
-Route::get('/newapp', function (){
-    \Illuminate\Support\Facades\Artisan::call('migrate:fresh');
-    \Illuminate\Support\Facades\Artisan::call('db:seed');
-    echo 'initialized';
-});
-
 
 Route::resource('/profile', App\Http\Controllers\ProfileController::class);
 Route::group(['middleware' => 'role:admin'], function() {
@@ -95,100 +80,16 @@ Route::group(['middleware' => 'role:admin'], function() {
     Route::resource('/permission', PermissionController::class);
     Route::resource('/role', RoleController::class);
 
-    Route::get('/init', function (){
 
-        \Illuminate\Support\Facades\Artisan::call('storage:link');
-        \Illuminate\Support\Facades\Artisan::call('migrate:fresh');
-        \Illuminate\Support\Facades\Artisan::call('db:seed');
-        echo 'initialized';
+    Route::get('/mail-test', function () {
+        $user = \App\Models\User::find(1);
+        $user->Notify(new \App\Notifications\UserRegisteredNotification());
+        echo "Notified";
     });
-
-    Route::get('/route-cache', function() {
-        $exitCode = Artisan::call('route:cache');
-        return 'Routes cache cleared';
-    });
-
-
-    Route::get('/config-cache', function() {
-        $exitCode = Artisan::call('config:cache');
-        return 'Config cache cleared';
-    });
-
-    Route::get('/cache-clear', function() {
-        $exitCode = Artisan::call('cache:clear');
-        return 'Config cache cleared';
-    });
-
 
 });
 
 
-Route::get('/restart-server',function (){
+Auth::routes();
 
-    $exitCode = Artisan::call('route:clear');
-
-    echo  $exitCode;
-    $exitCode1 = Artisan::call('view:clear');
-
-    echo  $exitCode1;
-    $exitCode2 = Artisan::call('config:clear');
-
-    echo  $exitCode2;
-    $exitCode3 = Artisan::call('cache:clear');
-
-    echo  $exitCode3;
-});
-Route::get('/mail-test',function (){
-    $user=\App\Models\User::find(1);
-    $user->Notify(new \App\Notifications\UserRegisteredNotification());
-    echo "Notified";
-});
-Route::get('sitemap', function() {
-
-    // create new sitemap object
-    $sitemap = App::make('sitemap');
-
-    // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
-    // by default cache is disabled
-    $sitemap->setCache('laravel.sitemap', 60);
-
-    // check if there is cached sitemap and build new only if is not
-    if (!$sitemap->isCached()) {
-        // add item to the sitemap (url, date, priority, freq)
-        $sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
-
-
-        // get all posts from db
-        $posts = DB::table('blogs')->orderBy('created_at', 'desc')->get();
-
-        // add every post to the sitemap
-        foreach ($posts as $post) {
-            $sitemap->add(URL::to('/').'/blog/'.$post->slug, $post->updated_at, '1.0', 'daily');
-        }
-
-
-        // get all posts from db
-        $videos = DB::table('videos')->orderBy('created_at', 'desc')->get();
-
-        // add every post to the sitemap
-        foreach ($videos as $post) {
-            $sitemap->add(URL::to('/').'/video/'.$post->slug, $post->updated_at, '1.0', 'daily');
-        }
-
-        // get all posts from db
-        $images = DB::table('blogs')->orderBy('created_at', 'desc')->get();
-
-        // add every post to the sitemap
-        foreach ($images as $post) {
-            $sitemap->add($post->thumb, $post->updated_at, '1.0', 'daily');
-        }
-
-
-    }
-
-
-    // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
-    return $sitemap->render('txt');
-});
-
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

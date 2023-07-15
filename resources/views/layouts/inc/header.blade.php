@@ -7,7 +7,7 @@
                     <div class="logo">
                         <a href="#"><img src="/assets/images/logo.png" alt="
 MT ICT Technology Plc." class="img-fluid">
-                         </a>  <br> MT ICT Technology Plc.
+                         </a>  <br>Berhane.
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-8 col-6 d-flex justify-content-end position-static">
