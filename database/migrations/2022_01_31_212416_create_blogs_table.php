@@ -25,7 +25,7 @@ class CreateBlogsTable extends Migration
             $table->foreign('user_id')->on('users')->references('id');
             $table->string('slug', 255)->unique();
             $table->string('tags')->nullable();
-            $table->string('lang')->default('en');
+            $table->string('lang')->nullable();
             $table->integer('visit')->default(0);
             $table->string('content_lang')->default('en');
             $table->softDeletes();

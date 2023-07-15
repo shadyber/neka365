@@ -6,7 +6,7 @@
     <div class="container pt-120 pb-120">
         <!-- Contact Cover -->
         <div class="contact-cover">
-            <img src="/assets/images/blog/4.jpg" alt="" class="img-fluid">
+            <img src="/assets/images/blog/4.jpg" alt="" class="img-fluid w-100">
         </div>
         <!-- End of Contact Cover -->
 
@@ -19,7 +19,7 @@
             <!-- End of Contact Form Title -->
 
             <div class="my-contact-form-cover">
-                <form class="my-contact-form" action="/contact" method="POST" >
+                <form  action="/contact" method="POST" >
                     @csrf
                     <div class="row">
                         <div class="col-md-6">

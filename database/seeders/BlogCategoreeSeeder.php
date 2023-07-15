@@ -15,21 +15,21 @@ class BlogCategoreeSeeder extends Seeder
     {
 
         \DB::table('blog_categories')->insert([
-            'title' => 'Inspiration',
+            'title' => 'AI',
             'icon' => '/assets/images/bg/news.png',
-            'slug' => 'inspiration',
+            'slug' => 'ai',
         ]);
 
         \DB::table('blog_categories')->insert([
-            'title' => 'Quotes',
+            'title' => 'Software',
             'icon' => '/assets/images/bg/software.png',
-            'slug' => 'quots',
+            'slug' => 'software',
         ]);
 
         \DB::table('blog_categories')->insert([
-            'title' => 'Story',
+            'title' => 'News',
             'icon' => '/assets/images/bg/ia.png',
-            'slug' => 'story',
+            'slug' => 'news',
         ]);
     }
 }

@@ -6,7 +6,7 @@
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="logo">
                         <a href="#"><img src="/assets/images/logo.png" alt="
-MT ICT Technology Plc." class="img-fluid">
+ ." class="img-fluid">
                          </a>  <br>Berhane.
                     </div>
                 </div>
@@ -15,6 +15,7 @@ MT ICT Technology Plc." class="img-fluid">
                         <ul class="nav nav-menu">
                             <li><a href="/">Home</a></li>
                             <li><a href="/about">About</a></li>
+                           <li><a href="/contact">Contact</a></li>
 
 
                             <li class="menu-item-has-children">
@@ -35,11 +36,8 @@ MT ICT Technology Plc." class="img-fluid">
                             <li class="menu-item">
                                 <a href="/video">{{__('Videos')}}</a>
 
-
-
                             </li>
 
-                            <li><a href="/book">{{__('Books')}}</a></li>
 
 
                             @auth
@@ -89,7 +87,7 @@ MT ICT Technology Plc." class="img-fluid">
 
                                 </a>
 
-                                <ul class="sub-menu">
+                                <ul class="sub-menu hidden">
                                     @foreach (Config::get('languages') as $lang => $language)
 
                                         @if ($lang != App::getLocale())

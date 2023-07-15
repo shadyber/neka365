@@ -45,7 +45,7 @@ class BlogController extends Controller
         if(!Auth::user()->hasRole('admin')){
             return redirect()->back()->with('error','You Don\'t Have This Permissions');
         }
-        return view('blog.create');
+return  view('admin.blog.create');
 
 
     }

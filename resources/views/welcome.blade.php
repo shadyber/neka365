@@ -21,13 +21,13 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 
 
-    <title>Welcome {{ config('app.name', 'Info251') }}</title>
+    <title>Welcome {{ config('app.name', 'Technology and AI news') }}</title>
 
     <meta property="og:url"           content="{{url()->full()}}" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Welcome to  Info251" />
-    <meta property="og:description"   content="sms ok on 6475 to suscribe and get inspired every day." />
-    <meta property="og:image"         content="https://info251.com/assets/images/banner/4.jpg')" />
+    <meta property="og:title"         content="Welcome to  AINews" />
+    <meta property="og:description"   content="time is running update your self." />
+    <meta property="og:image"         content="/assets/images/banner/4.jpg'" />
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

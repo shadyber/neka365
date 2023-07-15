@@ -60,6 +60,15 @@ class VideoController extends Controller
             return redirect()->back()->with('error','You Don\'t Have This Permission');
         }
 
+
+        $request->validate([
+            'title'=>'required',
+            'videoId'=>'required',
+            'iframe'=>'required',
+
+
+        ]);
+
         $lastvideo=  Video::create([
                 'title'=>$request->input('title'),
                 'detail'=>$request->input('detail'),

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogCategoryController;
-use \App\Http\Controllers\BookController;
+
 use App\Http\Controllers\BlogCommentController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PermissionController;
@@ -12,6 +12,8 @@ use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProfileCOntroller;
 use Illuminate\Support\Facades\URL;
 
 
@@ -58,8 +60,8 @@ Route::get('/about', function (){
 
 
 
-
 Route::resource('/comment', BlogCommentController::class);
+Route::resource('/contact', ContactController::class);
 Route::resource('/newsletters', NewsletterController::class);
 
 
@@ -71,7 +73,7 @@ Route::get('/notifications/{id}',[App\Http\Controllers\NotificationsController::
 
 
 
-Route::resource('/profile', App\Http\Controllers\ProfileController::class);
+Route::resource('/profile', ProfileController::class);
 Route::group(['middleware' => 'role:admin'], function() {
 
     Route::resource('/dashboard', App\Http\Controllers\ProfileController::class);

@@ -9,11 +9,11 @@
                     <div class="col-md-6 order-2 order-md-1">
                         <!-- Banner Text -->
                         <div class="banner-slide-text">
-                            <p class="category"><a href="#">Motivation</a></p>
+                            <p class="category"><a href="#">Technology</a></p>
                             <h1> {{__('Intro1')}}.</h1>
                             <p class="desc">{{__('Intro1_detail')}}
                             </p>
-                            <a href="sms://6475?body=ok" class="btn btn-primary btn btn-light">{{__('Subscribe')}}</a>
+
                         </div>
                         <!-- End of Banner Text -->
                     </div>
@@ -38,7 +38,7 @@
                             <h1>{{__('Intro2')}}
                             </h1>
                             <p class="desc">{{__('Intro2_detail')}} </p>
-                            <a href="sms://8888?body=ok" class="btn btn-primary">View More</a>
+
                         </div>
                         <!-- End of Banner Text -->
                     </div>
@@ -62,7 +62,6 @@
                             <p class="category"><a href="#">Knowledge</a></p>
                             <h1>{{__('Intro3')}}</h1>
                             <p class="desc">{{__('Intro3_detail')}}</p>
-                            <a href="sms://8888?body=ok" class="btn btn-primary">View More</a>
                         </div>
                         <!-- End of Banner Text -->
                     </div>
